@@ -100,7 +100,27 @@
   environment.systemPackages = with pkgs; [
     git
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    just
   ];
+
+  systemd.sleep.extraConfig = ''
+  AllowSuspend=yes
+  AllowHibernation=no
+  AllowHybridSleep=yes
+  AllowSuspendThenHibernate=no
+  '';
+
+  security.sudo.extraConfig = ''
+  Defaults timestamp_timeout=30
+  '';
+
+
+  programs = {
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [proton-ge-bin];
+    };
+  };
 
   # Enable OpenGL
   hardware.graphics = {
