@@ -118,13 +118,6 @@
     '';
 
 
-    programs = {
-      steam = {
-        enable = true;
-        extraCompatPackages = with pkgs; [proton-ge-bin];
-      };
-    };
-
     # Enable OpenGL
     hardware.graphics = {
       enable = true;
