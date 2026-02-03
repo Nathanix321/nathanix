@@ -5,7 +5,7 @@
 }: 
 let 
   flake.modules.nixos.greySlate.imports = with inputs.self.modules.nixos; [
-    # Modules???
+    nathaniel
   ];
 
   boot = {
