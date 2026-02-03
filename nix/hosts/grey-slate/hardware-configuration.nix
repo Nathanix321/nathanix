@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.hostGreySlate = {
+  flake.modules.nixos.greySlate = {
     config,
     lib,
     pkgs,

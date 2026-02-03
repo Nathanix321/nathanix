@@ -1,13 +1,12 @@
-{ inputs, ... }:
+{ inputs, lib, ...}:
 {
-  imports = [
-    inputs.flake-file.flakeModules.dendritic
-    inputs.flake-parts.flakeModules.modules
-  ];
+  
+    flake-file.inputs.nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    flake-file.inputs.flake-file.url = lib.mkDefault "github:vic/flake-file";
+    flake-file.inputs.den.url = lib.mkDefault "github:vic/den";
 
-  flake-file.inputs = {
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-file.url = "github:vic/flake-file";
-    import-tree.url = "github:vic/import-tree";
-  };
+  imports = [
+    (inputs.flake-file.flakeModules.dentritic or { })
+    (inputs.den.flakeModules.dentritic or { })
+  ];
 }
